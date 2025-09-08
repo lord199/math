@@ -1,0 +1,203 @@
+
+%\documentclass[oneside,final,14pt]{extreport}
+\documentclass[12pt, a4paper, openany]{book}
+
+
+
+\usepackage[left=1cm,right=1cm,top=2cm,bottom=2cm,bindingoffset=0cm]{geometry}
+%\usepackage[koi8-r]{inputenc}
+%\usepackage[russianb]{babel}
+\usepackage{vmargin}
+
+\setpapersize{A4}
+\usepackage[T2A]{fontenc}
+\usepackage[utf8x]{inputenc}
+\usepackage[english, russian]{babel}
+\setmarginsrb{2cm}{2cm}{2cm}{2cm}{0pt}{5mm}{0pt}{0mm}
+\usepackage{indentfirst}
+\usepackage{nicefrac} % For comparison
+%\usepackage{xfrac}    % Works better with other fonts
+%\usepackage[unicode, pdftex]{hyperref}
+\usepackage{lettrine}
+\usepackage[usenames]{color}
+\usepackage{colortbl}
+\usepackage{mathtext}
+\usepackage{epigraph}
+\usepackage{amsmath, amsfonts, amssymb, mathrsfs}
+%\usepackage{mathptmx}
+%\usepackage{txfonts}
+\usepackage{pxfonts}
+\usepackage[pagestyles]{titlesec}
+\usepackage{ebgaramond}
+\usepackage{awesomebox}
+\usepackage{enumitem}
+\usepackage{makeidx}
+\makeindex
+    \usepackage{etoolbox}
+\makeatletter
+\newlength\epitextskip
+\pretocmd{\@epitext}{\em}{}{}
+\apptocmd{\@epitext}{\em}{}{}
+\patchcmd{\epigraph}{\@epitext{#1}\\}{\@epitext{#1}\\[\epitextskip]}{}{}
+\makeatother
+
+\DeclareSymbolFont{Xlargesymbols}{OMX}{cmex}{m}{n}
+\DeclareMathSymbol{\Xsum}{\mathop}{Xlargesymbols}{80}
+
+\setlength\epigraphrule{0pt}
+\setlength\epitextskip{2ex}
+\setlength\epigraphwidth{.8\textwidth}
+
+\usepackage{xfrac}    % Works better with other fonts
+\usepackage[colorlinks=true,linkcolor=black,urlcolor=black,bookmarksopen=true]{hyperref}
+
+\usepackage{fancyhdr} % пакет для установки колонтитулов
+\pagestyle{fancy} % смена стиля оформления страниц
+\fancyhf{} % очистка текущих значений
+\fancyhead[C]{\thepage} % установка верхнего колонтитула
+\renewcommand{\headrulewidth}{0pt} % убрать разделительную линию
+
+
+% Настройка вертикальных и горизонтальных отступов
+\titlespacing{\chapter}{0pt}{5pt}{5pt}
+\titlespacing{\section}{\parindent}{4mm}{4mm}
+\titlespacing{\subsection}{\parindent}{3mm}{3mm}
+
+
+% Настройка задачи со зведочкой
+\newcounter{namedlistcounter}  % number the items
+\newenvironment{withdot}
+{\begin{list}
+		{\arabic{namedlistcounter}*.} % labeling 
+		{\usecounter{namedlistcounter}   % set counter
+			\setlength{\leftmargin}{3em}} % set spacing 
+	}
+	{\end{list}}
+
+
+\newcommand{\anonsection}[1]{ \section*{#1} \addcontentsline{toc}{section}{\numberline {}#1}} 
+
+\makeatletter %%%%% <---- Starting chapter without a pagebreak
+\renewcommand\chapter{\par%
+	\thispagestyle{plain}% \global\@topnum\z@
+	\@afterindentfalse \secdef\@chapter\@schapter}
+\makeatother %%%%% <---- Starting chapter without a pagebreak
+\titleformat{\chapter}[display]
+{\normalfont\bfseries}{}{0pt}{\Large}
+
+\newpagestyle{mystyle}{
+	\sethead[\thepage][][]{}{}{\thepage}	
+}
+
+\renewcommand{\rmdefault}{cmr}
+
+
+\pagestyle{mystyle}
+\sloppy
+
+\begin{document}
+
+	
+	\begin{titlepage}
+		
+		\begin{center}
+			%\vfill
+			
+			%\vfill
+			\topskip 0pt
+		%	\vspace*{\fill}
+			\begin{flushleft}
+		{\large	МАТЕМАТИЧЕСКАЯ\\ЛОГИКА\\И ОСНОВАНИЯ\\МАТЕМАТИКИ}			
+
+			\ \\
+\ \\
+			\ \\
+\ \\
+			{\large Ю.В.МАТИЯСЕВИЧ\\}
+			\ \\
+			\ \\
+			{\Huge\bf ДЕСЯТАЯ ПРОБЛЕМА ГИЛЬБЕРТА}
+
+
+			\vspace*{\fill}    
+			
+			\vfill
+			
+Москва
+
+Издательская фирма
+
+«Физико-математическая литература»
+
+ВО «Наука»
+
+1\ 9\ 9\ 3
+
+			\end{flushleft}
+		\end{center}
+		
+	\end{titlepage}
+	
+	\thispagestyle{empty} % выключаем отображение номера для этой страницы
+	
+	\newpage
+	
+\setcounter{secnumdepth}{0}  
+	
+	\section[Предисловие]{\center ПРЕДИСЛОВИЕ}
+
+На Втором Международном конгрессе математиков в Париже Давид Гильберт [1900] сделал свой знаменитый доклад «Математические проблемы», содержащий 23 проблемы или, точнее, 23 группы родственных проблем, которые 19-й век оставлял в наследие 20-му. Проблема под номером десять была посвящена диофантовым уравнениям.
+	\begin{center}
+		{\small 10. ЗАДАЧА О РАЗРЕШИМОСТИ ДИОФАНТОВА УРАВНЕНИЯ.}
+\end{center}
+
+
+\hangindent=1.5cm \hangafter=0 {\footnotesize Пусть задано диофантово уравнение с произвольными неизвестными и целыми рациональными числовыми коэффициентами. \textit{Указать способ, при помощи которого возможно после конечного числа операций установить, разрешимо ли это уравнение в целых рациональных числах.}}
+
+\
+
+Под «способом», который предлагает найти Д. Гильберт, в настоящее время подразумевают «алгоритм». В начале века, когда проблемы формулировались, ещё не было математически строго общего понятия алгоритма. Отсутствие такого понятия не могло само по себе служить препятствием к положительному решению 10-й проблемы Гильберта, поскольку про конкретные алгоритмы всегда было ясно, что они действительно дают требуемый общий способ решения соответствующих проблем.
+
+В 30-е годы в работах К. Гёделя, А. Чёрча, А. М. Тьюринга и других логиков было выработано строгое общее понятие алгоритма, которое дало принципиальную возможность устанавливать алгоритмическую неразрешимость, т. е. доказывать невозможность алгоритма с требуемыми свойствами. Тогда же были найдены первые примеры алгоритмически неразрешимых проблем, сначала в самой математической логике, а затем и в других разделах математики.
+
+Таким образом, теория алгоритмов создала необходимые предпосылки для попыток доказать неразрешимость 10-й проблемы Гильберта. Первые работы в этом направлении были опубликованы в начале 50-х годов, а в 1970 году исследования завершились «отрицательным решением» 10-й проблемы Гильберта.
+
+В случае 10-й проблемы Гильберта, как и в случае других проблем, долго ожидавших своего решения, не меньшее, а пожалуй, большее значение имеет математический аппарат, развитый для решения проблемы и находящий затем другие приложения, порой неожиданные. Основной технический результат, полученный при доказательстве неразрешимости 10-й проблемы  Гильберта — это теорема о совпадении класса \textit{диофантовых множеств} и класса \textit{перечислимых множеств}. В качестве одного из следствий этой теоремы, формулировка которого не содержит специальных терминов, приведем следующее: \textit{можно явно указать  полином от многих переменных с целыми коэффициентами такой,  что множество всех его положительных значений, принимаемых  при целочисленных значениях переменных, есть в точности  множество всех простых чисел}. 
+
+Настоящая книга посвящена алгоритмической неразрешимости 10-й проблемы Гильберта и родственным вопросам; многочисленные частичные результаты, полученные в направлении положительного решения 10-й проблемы Гильберта, здесь почти  не рассматриваются. 
+
+Отрицательное решение 10-й проблемы Гильберта излагали (с разной степенью детализации) многие авторы, в частности: Азра [1971], Белл и Маховер [1977]. Гермес [1972, 1978], Девис [1973а, 1974]. Захаров [1970, 1986], Капланский [1977], Манин [1973, 1977], Маргенштерн [1981]. Матиясевич [1972а], Мияйлович, Маркович и Дошен [1986], Руохонен [1972, 1980], Саломаа [1985], Смориньский [1987], Сусман [1971], Такахаши [1974], Фенстад [1971], Хавел [1973], Хиросе [1973]. 
+
+Одной из отличительных особенностей настоящей книги является то. что она. помимо собственно отрицательного решения 10-й проблемы Гильберта, содержит ряд приложений разработанной для этого решения техники; приложения эти в настоящее  время разбросаны, в основном, по журнальным публикациям. За два десятилетия, прошедшие со времени решения проблемы, были получены многообразные упрощения и модификации первоначального доказательства. Настоящая книга также содержит ряд новых, ранее не публиковавшихся доказательств. 
+	\newpage
+	\tableofcontents
+	
+	\thispagestyle{empty} % 
+	
+	\newpage
+	
+	\setcounter{secnumdepth}{0}  
+	
+	\phantomsection
+	
+		\section*{Описание}
+	
+	{\bf Название:} Десятая проблема Гильберта
+	
+{\bf Автор:} Матиясевич Ю.В.
+	
+{\bf Издательство:} М: Физматлит. 1993. - 224 с. - ISBN 5-02-014326-X
+	
+		{\bf Рецензент:}  доктор физико-математических наук С.И. Адян
+	
+		{\bf Аннотация:} Дается полное доказательство алгоритмической неразрешимости 10-й проблемы Гильберта, касающейся диофантовых уравнений, вместе с необходимыми сведениями из теории алгоритмов и теории чисел, а также приложения развитой для этого техники к другим массовым проблемам теории чисел, алгебры, анализа, теоретического программирования.
+		
+		Для математиков, в том числе аспирантов и студентов старших курсов.
+		
+		Библиогр. 247 назв.
+		\thispagestyle{empty} % выключаем отображение номера для этой страницы
+
+	
+\end{document}
+
+\printindex
