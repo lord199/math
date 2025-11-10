@@ -1,0 +1,261 @@
+
+%\documentclass[oneside,final,14pt]{extreport}
+\documentclass[12pt, a4paper, openany]{book}
+
+
+
+\usepackage[left=1cm,right=1cm,top=2cm,bottom=2cm,bindingoffset=0cm]{geometry}
+%\usepackage[koi8-r]{inputenc}
+%\usepackage[russianb]{babel}
+\usepackage{vmargin}
+
+\setpapersize{A4}
+\usepackage[T2A]{fontenc}
+\usepackage[utf8x]{inputenc}
+\usepackage[english, russian]{babel}
+\setmarginsrb{2cm}{2cm}{2cm}{2cm}{0pt}{5mm}{0pt}{0mm}
+\usepackage{indentfirst}
+\usepackage{nicefrac} % For comparison
+%\usepackage{xfrac}    % Works better with other fonts
+%\usepackage[unicode, pdftex]{hyperref}
+\usepackage{lettrine}
+\usepackage[usenames]{color}
+\usepackage{colortbl}
+\usepackage{mathtext}
+\usepackage{epigraph}
+\usepackage{amsmath, amsfonts, amssymb, mathrsfs}
+%\usepackage{mathptmx}
+%\usepackage{txfonts}
+\usepackage{pxfonts}
+\usepackage[pagestyles]{titlesec}
+\usepackage{ebgaramond}
+\usepackage{awesomebox}
+\usepackage{enumitem}
+\usepackage{makeidx}
+\makeindex
+    \usepackage{etoolbox}
+\makeatletter
+\newlength\epitextskip
+\pretocmd{\@epitext}{\em}{}{}
+\apptocmd{\@epitext}{\em}{}{}
+\patchcmd{\epigraph}{\@epitext{#1}\\}{\@epitext{#1}\\[\epitextskip]}{}{}
+\makeatother
+%running fraction with slash - requires math mode.
+\newcommand*\rfrac[2]{{}^{#1}\!/_{#2}}
+
+\DeclareSymbolFont{Xlargesymbols}{OMX}{cmex}{m}{n}
+\DeclareMathSymbol{\Xsum}{\mathop}{Xlargesymbols}{80}
+
+\setlength\epigraphrule{0pt}
+\setlength\epitextskip{2ex}
+\setlength\epigraphwidth{.8\textwidth}
+
+\usepackage{xfrac}    % Works better with other fonts
+\usepackage[colorlinks=true,linkcolor=black,urlcolor=black,bookmarksopen=true]{hyperref}
+
+\usepackage{fancyhdr} % пакет для установки колонтитулов
+\pagestyle{fancy} % смена стиля оформления страниц
+\fancyhf{} % очистка текущих значений
+\fancyhead[C]{\thepage} % установка верхнего колонтитула
+\renewcommand{\headrulewidth}{0pt} % убрать разделительную линию
+
+
+% Настройка вертикальных и горизонтальных отступов
+\titlespacing{\chapter}{0pt}{5pt}{5pt}
+\titlespacing{\section}{\parindent}{4mm}{4mm}
+\titlespacing{\subsection}{\parindent}{3mm}{3mm}
+
+
+%
+%\renewcommand{\tabcolsep}{1cm}   %% increase table column spacing
+
+% Настройка задачи со зведочкой
+\newcounter{namedlistcounter}  % number the items
+\newenvironment{withdot}
+{\begin{list}
+		{\arabic{namedlistcounter}*.} % labeling 
+		{\usecounter{namedlistcounter}   % set counter
+			\setlength{\leftmargin}{3em}} % set spacing 
+	}
+	{\end{list}}
+
+
+\newcommand{\anonsection}[1]{ \section*{#1} \addcontentsline{toc}{section}{\numberline {}#1}} 
+
+\makeatletter %%%%% <---- Starting chapter without a pagebreak
+\renewcommand\chapter{\par%
+	\thispagestyle{plain}% \global\@topnum\z@
+	\@afterindentfalse \secdef\@chapter\@schapter}
+\makeatother %%%%% <---- Starting chapter without a pagebreak
+\titleformat{\chapter}[display]
+{\normalfont\bfseries}{}{0pt}{\Large}
+
+\newpagestyle{mystyle}{
+	\sethead[\thepage][][]{}{}{\thepage}	
+}
+
+\renewcommand{\rmdefault}{cmr}
+
+
+\pagestyle{mystyle}
+\sloppy
+
+\begin{document}
+
+	
+	\begin{titlepage}
+\begin{center}
+
+			%\vfill
+			
+			%\vfill
+			\topskip 0pt
+		%	\vspace*{\fill}
+
+		{\large	А. Н. КОЛМОГОРОВ
+
+			\ \\
+\ \\
+			\ \\
+\ \\
+			\vfill
+			\ \\
+			\ \\
+			{\Huge\bf О ПРОФЕССИИ МАТЕМАТИКА}
+			\ \\
+				\ \\
+			\textit{(Издание третье, дополнненное)}
+
+
+			\vspace*{\fill}    
+			
+			\vfill
+			
+И З Д А Т Е Л Ь С Т В О
+
+МОСКОВСКОГО УНИВЕРСИТЕТА
+
+1960
+}
+\end{center}
+	\end{titlepage}
+	
+	\thispagestyle{empty} % выключаем отображение номера для этой страницы
+
+	\newpage
+	\begin{center}
+		
+			\ \\
+\ \\
+\ \\
+			\ \\
+\ \\
+\ \\
+	Печатается по постановлению
+	
+	Редакционно-издательского совета
+	
+	Московсого университета
+\end{center}
+	
+	\newpage
+	
+\setcounter{secnumdepth}{0}  
+	\ \\
+	\ \\
+	\section[1. За многочисленное и талантливое пополнение кадров советских математиков]{\center 1. ЗА МНОГОЧИСЛЕННОЕ И ТАЛАНТЛИВОЕ ПОПОЛНЕНИЕ КАДРОВ СОВЕТСКИХ МАТЕМАТИКОВ}
+
+Значение математических методов в таких науках, как механика, физика или астрономия, хорошо известно. Также
+всем известно и то, что математика необходима в практической работе инженеров и техников. Элементарные знания по геометрии или умение пользоваться буквенными формулами необходимы почти каждому мастеру или квалифицированному рабочему. Но менее ясным для многих является вопрос о том, что значит иметь специальность математика и заниматься самой математикой в качестве основной профессии.
+
+Очень многие представляют себе дело так, что в учебниках и математических справочниках собрано уже вполне достаточно формул и правил для решения всевозможных, встречающихся на практике математических задач. Даже очень образованные люди часто спрашивают с недоумением: разве в математике можно сделать что-либо новое?
+
+Поэтому и математика иногда представляют себе как скучного человека, выучившего большое число формул.и теорем, и считают, что его задача состоит в том, чтобы заученные готовые знания передать другим.
+
+Во всем этом верно только то, что математические сведения, сообщаемые в средней школе и на первых ступенях
+изучения математики в высшей школе, добыты человенеством давно. Но даже и эти простейшие математические - сведения могут применяться умело и с пользой только в том случае, если они усвоены творчески, так, что учащийся видит сам, как можно было бы прийти к ним самостоятельно. От преподавателя математики и в высшей и средней школе требуется не только твердое знание преподаваемой им науки. Хорошо преподавать математику может только человек, который сам
+
+	\newpage
+	\tableofcontents
+	
+	\thispagestyle{empty} % 
+
+	\newpage
+
+\setcounter{secnumdepth}{0}  
+
+\phantomsection	
+	\begin{center}
+				\ \\
+	\ \\
+	\ \\
+	\ \\
+	\textbf{Колмогоров Андрей Николаевич}
+	\ \\
+	О ПРОФЕССИИ МАТЕМАТИКА
+		\ \\
+			\ \\
+	Редактор \textit{С. Ф. Кондрашкова}
+	
+Техн. редактор \textit{Г. И. Георгиева}
+	\ \\
+		\ \\
+Сдано в производство 15. VI 1959 г.
+
+Подписано к печати 14. III 60 г.
+
+Л-90183	Формат бум. 60 $\times$ 92$\rfrac{1}{16}$
+
+
+Печ. л. 2,0 Бум. д. 1,0 Уч-изд. д. 1,88
+
+Заказ 783
+
+Тираж 40 000 (2*15 000) Цена 55 к.
+
+Издательство Московского
+
+универсистета
+
+Москва, Ленинские горы
+
+Административный корпус
+
+	\ \\
+		\ \\
+
+1 типография Издательства МГУ
+
+Москва, Моховая, 9
+
+	\end{center}
+			\thispagestyle{empty} % выключаем отображение номера для этой страницы
+	\newpage
+	
+	\setcounter{secnumdepth}{0}  
+	
+	\phantomsection
+	
+		\section*{Описание}
+	
+	{\bf Название:} О ПРОФЕССИИ МАТЕМАТИКА
+	
+{\bf Автор:} Колмогоров Андрей Николаевич
+	
+{\bf Издательство:} Издательство Московского универсистета, Москва, Ленинские горы, Административный корпус
+	
+		{\bf Редактор:}  \textit{С. Ф. Кондрашкова}
+		
+		{\bf Техн. редактор:}  \textit{Г. И. Георгиева}
+	
+		{\bf Аннотация:} Дается полное доказательство алгоритмической неразрешимости 10-й проблемы Гильберта, касающейся диофантовых уравнений, вместе с необходимыми сведениями из теории алгоритмов и теории чисел, а также приложения развитой для этого техники к другим массовым проблемам теории чисел, алгебры, анализа, теоретического программирования.
+		
+		Для математиков, в том числе аспирантов и студентов старших курсов.
+		
+		Библиогр. 247 назв.
+		\thispagestyle{empty} % выключаем отображение номера для этой страницы
+
+	
+\end{document}
+
+\printindex
